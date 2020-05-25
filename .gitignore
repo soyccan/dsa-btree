@@ -1,0 +1,15 @@
+*.d
+*.json
+*.o
+
+avl-demo
+
+*.dSYM
+.DS_Store
+.lldbinit
+.clangd
+perf.data
+f_mode
+
+tmp/
+build/
