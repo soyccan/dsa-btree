@@ -3,6 +3,10 @@
 *.o
 
 avl-demo
+completeavl
+hw6_2_1
+hw6_2_2
+hw6_2_3
 
 *.dSYM
 .DS_Store
@@ -10,6 +14,7 @@ avl-demo
 .clangd
 perf.data
 f_mode
+compile_commands.json
 
 tmp/
 build/

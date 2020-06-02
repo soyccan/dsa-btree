@@ -45,5 +45,17 @@ int main(){
   
   postorder_integer_avl(tree->avl_root);
   puts("");
+
+  int x =15;
+  avl_delete(tree,&x);
+  postorder_integer_avl(tree->avl_root);
+  puts("");
+
+  x =4;
+  avl_delete(tree,&x);
+  postorder_integer_avl(tree->avl_root);
+  puts("");
+
+
   return 0;
 }
