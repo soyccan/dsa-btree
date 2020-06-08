@@ -51,6 +51,10 @@ int main()
         dfs(f.avl_tree->avl_root);
         puts("");
     }
+    inorder(f.avl_tree->avl_root);
+    puts("");
+
+    printf("h=%d\n", tree_height(f.avl_tree->avl_root));
 
     return 0;
 }

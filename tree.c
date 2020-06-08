@@ -77,9 +77,14 @@ void tree_data_destroy(void* item, void* param)
 
 int tree_height(const struct node_t* node)
 {
-    if (!node)
+    if (!node->link[0] && !node->link[1])
         return 0;
-    return max(tree_height(node->link[0]), tree_height(node->link[1])) + 1;
+    else if (!node->link[0])
+        return tree_height(node->link[1]) + 1;
+    else if (!node->link[1])
+        return tree_height(node->link[0]) + 1;
+    else
+        return max(tree_height(node->link[0]), tree_height(node->link[1])) + 1;
 }
 
 void forest_init(struct forest_t* forest, base_comparison_func* comp)
@@ -95,15 +100,15 @@ void forest_insert_int(struct forest_t* forest, int x)
 
     data = malloc(sizeof(int));
     *data = x;
-    bst_probe(forest->bst_tree, data);
+    bst_insert(forest->bst_tree, data);
 
     data = malloc(sizeof(int));
     *data = x;
-    avl_probe(forest->avl_tree, data);
+    avl_insert(forest->avl_tree, data);
 
     data = malloc(sizeof(int));
     *data = x;
-    rb_probe(forest->rb_tree, data);
+    rb_insert(forest->rb_tree, data);
 }
 
 void forest_insert_str(struct forest_t* forest, const char* str)

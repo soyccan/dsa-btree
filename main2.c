@@ -41,7 +41,7 @@ int main()
     FOR (int, i, 0, 3) {
         printf("%s", name[i]);
         FOR (int, j, 0, 3)
-            printf(" %d", h[i][j]);
+            printf(" %d", h[j][i]);
         puts("");
     }
 

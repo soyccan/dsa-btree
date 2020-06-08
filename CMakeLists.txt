@@ -49,18 +49,18 @@ set(SRCS "${LIBAVL}/avl.c" "${LIBAVL}/bst.c" "${LIBAVL}/rb.c" tree.c)
 # target_compile_options
 
 
-set(TARGET avl-demo)
-add_executable("${TARGET}" avl-demo.c "${LIBAVL}/avl.c")
-target_include_directories("${TARGET}" PRIVATE "${LIBAVL}")
+# set(TARGET avl-demo)
+# add_executable("${TARGET}" avl-demo.c "${LIBAVL}/avl.c")
+# target_include_directories("${TARGET}" PRIVATE "${LIBAVL}")
 
 
 set(TARGET hw6_2_1)
 add_executable("${TARGET}" main1.c "${SRCS}")
 target_include_directories("${TARGET}" PRIVATE "${LIBAVL}")
 
-set(TARGET completeavl)
-add_executable("${TARGET}" completeavl.c "${SRCS}")
-target_include_directories("${TARGET}" PRIVATE "${LIBAVL}")
+# set(TARGET completeavl)
+# add_executable("${TARGET}" completeavl.c "${SRCS}")
+# target_include_directories("${TARGET}" PRIVATE "${LIBAVL}")
 
 set(TARGET hw6_2_2)
 add_executable("${TARGET}" main2.c "${SRCS}")

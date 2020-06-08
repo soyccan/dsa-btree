@@ -1,13 +1,19 @@
-.PHONY: all avl-demo hw6_2_1 hw6_2_2 hw6_2_3 clean upload
+EXE := hw6_2_1 hw6_2_2 hw6_2_3
+.PHONY: all clean upload $(EXE)
 
-all: hw6_2_1
+all: $(EXE)
 
-avl-demo hw6_2_1 hw6_2_2 hw6_2_3:
-	[ -e build ] || mkdir build
-	cd build && cmake .. && make
+build: CMakeLists.txt
+	mkdir -pv build
+	cd build && cmake ..
+
+$(EXE): build
+	cmake --build build --target $@
 
 clean:
-	rm -rf avl-demo hw6_2_1 hw6_2_2 hw6_2_3
+	# use negated condition so that make won't stop
+	[ ! -e build ] || cmake --build build --target clean
+	rm -rf build
 
 upload:
-	scp -P 9453 -r *.{c,h} CMakeLists.txt soyccan@bravo.nctu.me:/home/soyccan/Documents/dsa-hw6/
+	scp -P 9453 -r *.{c,h} Makefile CMakeLists.txt soyccan@bravo.nctu.me:/home/soyccan/Documents/dsa-hw6/

@@ -42,7 +42,7 @@ void randseq(int n)
 int main()
 {
     srand(time(NULL));
-    randseq(4096 * 10000);
+    // randseq(4096 * 10000);
 
     FOR (int, i, 0, 3) {
         FOR (int, j, 0, 3) {
@@ -56,20 +56,25 @@ int main()
         forest_init(&forest, tree_data_compare_int);
 
         // insert
-        FOR (int, i, rnd * 4096, rnd * 4096 + 2048) {
-            forest_insert_int(&forest, Rand[i]);
+        FOR (int, i, 0, 2048) {
+            int r = rand();
+            while (avl_find(forest.avl_tree, &r)) r = rand();
+            forest_insert_int(&forest, r);
+            Rand[i] = r;
         }
         forest_height(&forest, h[0]);
 
         // delete
-        FOR (int, i, rnd * 4096, rnd * 4096 + 1024) {
+        FOR (int, i, 0, 1024) {
             forest_delete_int(&forest, Rand[i]);
         }
         forest_height(&forest, h[1]);
 
         // insert
-        FOR (int, i, rnd * 4096 + 2048, rnd * 4096 + 4096) {
-            forest_insert_int(&forest, Rand[i]);
+        FOR (int, i, 0, 4096) {
+            int r = rand();
+            while (avl_find(forest.avl_tree, &r)) r = rand();
+            forest_insert_int(&forest, r);
         }
         forest_height(&forest, h[2]);
 
